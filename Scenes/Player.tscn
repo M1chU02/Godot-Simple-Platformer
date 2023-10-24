@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3vtqadk7iwi3"]
+
+[ext_resource type="Script" path="res://Scenes/Player.gd" id="1_ow47j"]
+[ext_resource type="Texture2D" uid="uid://dsuw157ptbi6j" path="res://Assets/PlayerAnimations/spr_ratrun_strip4_aqua_0.png" id="1_siauj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfd1i"]
+atlas = ExtResource("1_siauj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xqn2"]
+atlas = ExtResource("1_siauj")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnyq4"]
+atlas = ExtResource("1_siauj")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqq0c"]
+atlas = ExtResource("1_siauj")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kyyyv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfd1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xqn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnyq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqq0c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khppm"]
+size = Vector2(54, 56)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ow47j")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kyyyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 3)
+shape = SubResource("RectangleShape2D_khppm")
